@@ -1,0 +1,28 @@
+{
+  "name": "generator-dockerized-django-polymer",
+  "version": "0.0.1", 
+   "//": "Remember to change index.js if the version number changes",
+  "description": "Yeoman generator that scaffolds out a Django project with Polymer for the frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JTarball/generator-dockerized-django-polymer.git"
+  },
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "author": "James Tarball",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JTarball/generator-dockerized-django-polymer/issues"
+  },
+  "homepage": "https://github.com/JTarball/generator-dockerized-django-polymer#readme",
+  "dependencies": {
+    "yeoman-generator": "^0.20.2",
+    "yosay": "^1.0.5",
+    "generator-polymer": "^1.0.5"
+  }
+}
