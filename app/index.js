@@ -4,20 +4,23 @@ var generators = require('yeoman-generator');
 var yosay = require('yosay');
 var path = require('path');
 var folderName = path.basename(process.cwd());
+var pjson = require('../package.json'); // can get the version - cool!
 
-// Add some methods - normally run in order, but some
-// special method names will trigger a specific run order
-var DjangoPolymerGenerator = generators.Base.extend({
+var DockerizedDjangoPolymerGenerator = generators.Base.extend({
+
 
     polymer: function() {
-        this.log('Firing generator polymer...');
+        this.log('Installing Polymer Official Generator...');
+        
+        // ---------------- Destination Root Change Here ------------------------------
+        // NOTE: We have changed the destination root to accomodate polymer generator!!
+        this.destinationRoot('docker/app/app')
 
         this.composeWith('polymer', {
             options: {
-                "skip-install": true
+                "skip-install": false
             }
         });
-       // this.fs.copyTpl(this.templatePath(''), this.destinationPath('polymer/'));
     },
 
     askForProjectInfo: function() {
@@ -36,12 +39,12 @@ var DjangoPolymerGenerator = generators.Base.extend({
             type: 'input',
             name: 'adminName',
             message: 'What is the admin name?',
-            default: 'Your Name'
+            default: 'James Tarball'
         }, {
             type: 'input',
             name: 'adminEmail',
             message: 'What is the admin email?',
-            default: 'your_email@domain.com'
+            default: 'james.tarball@gmail.com'
         }, {
             type: 'list',
             name: 'djangoVersion',
@@ -132,19 +135,19 @@ var DjangoPolymerGenerator = generators.Base.extend({
 
     docker: function() {
         // Basic Files
-        this.fs.copyTpl(this.templatePath('README.md'), this.destinationPath('README.md'));
-        this.fs.copyTpl(this.templatePath('LICENSE'), this.destinationPath('LICENSE'));
-        this.fs.copyTpl(this.templatePath('.gitignore'), this.destinationPath('.gitignore'));
+        this.fs.copyTpl(this.templatePath('README.md'), this.destinationPath('../../../README.md'));
+        this.fs.copyTpl(this.templatePath('LICENSE'), this.destinationPath('../../../LICENSE'));
+        //this.fs.copyTpl(this.templatePath('.gitignore'), this.destinationPath('../../../.gitignore'));
         // Docker Toolbox
-        this.fs.copyTpl(this.templatePath('docker-compose.yml'), this.destinationPath('docker-compose.yml'));
-        this.fs.copyTpl(this.templatePath('production-template.yml'), this.destinationPath('production-template.yml'));
+        this.fs.copyTpl(this.templatePath('docker-compose.yml'), this.destinationPath('../../../docker-compose.yml'));
+        this.fs.copyTpl(this.templatePath('production-template.yml'), this.destinationPath('../../../production-template.yml'));
         // Main Environments File
         // Environment Variables configures django settings
         // Currently only support postgres
         this.databaseEngine = "'django.db.backends.postgresql_psycopg2'";
         this.logLevel = 'DEBUG';
         this.devSettings = 'True';
-        this.fs.copyTpl(this.templatePath('env'), this.destinationPath('env'), {
+        this.fs.copyTpl(this.templatePath('env'), this.destinationPath('../../../env'), {
             admin_name: this.adminName,
             admin_email: this.adminEmail,
             db_engine: this.databaseEngine,
@@ -157,37 +160,26 @@ var DjangoPolymerGenerator = generators.Base.extend({
             dj_devsettings: this.devSettings
         });
         // For Circle CI Testing
-        this.fs.copyTpl(this.templatePath('circle.yml'), this.destinationPath('circle.yml'));
+        this.fs.copyTpl(this.templatePath('circle.yml'), this.destinationPath('../../../circle.yml'));
         // Create Docker Machine on AWS
-        this.fs.copyTpl(this.templatePath('create-docker-machine-aws.sh'), this.destinationPath('create-docker-machine-aws.sh'));
+        this.fs.copyTpl(this.templatePath('create-docker-machine-aws.sh'), this.destinationPath('../../../create-docker-machine-aws.sh'));
         // Deployment: Build, Tag & Create New Docker Compose file based on new images
-        this.fs.copyTpl(this.templatePath('build-tag-push.py'), this.destinationPath('build-tag-push.py'));
+        this.fs.copyTpl(this.templatePath('build-tag-push.py'), this.destinationPath('../../../build-tag-push.py'));
     },
 
     app: function() {
         // create secret key
         this.secretKey = require('crypto').randomBytes(Math.ceil(50 * 3 / 4)).toString('base64');
-        this.releaseVersion = '0.0.1';
+        this.releaseVersion = pjson.version;
         // This is laxy but it works copy the whole docker directory
         // The generator version and secret_key are in django settings file base.py
-        this.fs.copyTpl(this.templatePath('docker/'), this.destinationPath('docker/'),{
-            generator_version: this.releaseVersion,
-            secret_key: this.secretKey,
+        this.fs.copyTpl(this.templatePath('docker/'), this.destinationPath('../../../docker/'),{
+           generator_version: this.releaseVersion,
+           secret_key: this.secretKey,
         });
     },
 
-    // Modify Polymer Generator to make compatible with a Django Project
-    DjangoifyPolymerGenerator: function() {
-        this.log(yosay("Making some special modifications to structure..."));
-        // move bower_components
-        //this.fs.move(
-        //  this.templatePath('bower_components'),
-        //  this.destinationPath('projects/static/bower_components')
-        //);
-        
-    },
-
-    // Finally,
+    // Finally, (See run context order in yeoman generator docs)
     end: function() {
         if (!this.options['skip-install']) {
             this.installDependencies();
@@ -197,4 +189,4 @@ var DjangoPolymerGenerator = generators.Base.extend({
 });
 
 
-module.exports = DjangoPolymerGenerator
+module.exports = DockerizedDjangoPolymerGenerator

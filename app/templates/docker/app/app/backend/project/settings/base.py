@@ -3,7 +3,7 @@
 This is the project main settings file. (Source controlled).
 If you need to override a setting locally, use local_settings.py.
 """
-GENERATOR_DOCKERIZED_DJANGO_POLYMER_VERSION = <%= generator_version %>
+GENERATOR_DOCKERIZED_DJANGO_POLYMER_VERSION = '<%= generator_version %>'
 import os
 import sys
 import logging
