@@ -144,7 +144,7 @@ var DockerizedDjangoPolymerGenerator = generators.Base.extend({
         // Main Environments File
         // Environment Variables configures django settings
         // Currently only support postgres
-        this.databaseEngine = "'django.db.backends.postgresql_psycopg2'";
+        this.databaseEngine = 'django.db.backends.postgresql_psycopg2';
         this.logLevel = 'DEBUG';
         this.devSettings = 'True';
         this.fs.copyTpl(this.templatePath('env'), this.destinationPath('../../../env'), {

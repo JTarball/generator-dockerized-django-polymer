@@ -419,25 +419,25 @@ LOGGING = {
     },
     'handlers': {
         'file': {
-        'level': 'DEBUG',
-        'class': 'logging.handlers.TimedRotatingFileHandler',
-        'when': 'midnight',
-        'interval': 1,
-        'backupCount': 30,
-        'filename': SITE_ROOT + '/log/' + 'project' + '.log',
-                'formatter': 'verbose',
+            'level': 'INFO',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'when': 'midnight',
+            'interval': 1,
+            'backupCount': 30,
+            'filename': SITE_ROOT + '/log/' + 'project' + '.log',
+            'formatter': 'verbose',
         },
         'null': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'django.utils.log.NullHandler',
         },
         'console': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.StreamHandler',
             'formatter': 'custom'
         },
         'mail_admins': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'django.utils.log.AdminEmailHandler',
             'filters': ['require_debug_false']
         }
@@ -447,19 +447,17 @@ LOGGING = {
         'django': {
             'handlers': ['console'],
             'propagate': True,
-            'level': 'DEBUG',
+            'level': 'INFO',
         },
         'django.request': {
             'handlers': ['console', 'file'],
-            'level': 'DEBUG',
+            'level': 'INFO',
             'propagate': False,
         },
         'project_logger': {
-        'handlers': ['console', 'file'],
-        'level': 'DEBUG',
-        'propagate': True,
-
-
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': True,
         },
     }
 }
