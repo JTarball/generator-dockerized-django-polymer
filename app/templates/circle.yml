@@ -16,7 +16,6 @@ dependencies:
         - sudo killall postgres
         - docker info
         - sudo pip install docker-compose
-        - docker-compose up -d
 
 test:
   override:

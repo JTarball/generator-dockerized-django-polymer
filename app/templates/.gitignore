@@ -5,8 +5,6 @@ bower_components
 
 # Created by https://www.gitignore.io/api/django
 ### Django ###
-*.log
-*.log.*
 *.pot
 *.pyc
 *,cover
