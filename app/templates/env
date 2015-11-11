@@ -26,23 +26,23 @@ SUPERUSER_PASSWORD=password12
 SUPERUSER_FIRSTNAME=James
 SUPERUSER_LASTNAME=Tarball
 SUPERUSER_EMAIL=james.tarball@gmail.com
-DB_ENGINE=<%- db_engine %>
-DB_NAME=<%- db_name %>
-DB_USER=<%- db_user %>
-DB_PASS=<%- db_password %>
-DB_HOST=<%- db_host %>
-DB_PORT=<%- db_port %>
+DB_ENGINE=django.db.backends.postgresql_psycopg2
+DB_NAME=test1
+DB_USER=root
+DB_PASS=password
+DB_HOST=postgres
+DB_PORT=5432
 
-DJ_DEV_SETTINGS=<%- dj_devsettings %>
-DJ_LOG_LEVEL=<%- dj_loglevel %> 
-ADMIN_NAME=<%- admin_name %> 
-ADMIN_EMAIL=<%- admin_email %> 
+DJ_DEV_SETTINGS=True
+DJ_LOG_LEVEL=DEBUG 
+ADMIN_NAME=James Tarball 
+ADMIN_EMAIL=james.tarball@gmail.com 
 
 # Postgresql Docker Service
 # =========================
-POSTGRES_DB=<%- db_name %>
-POSTGRES_USER=<%- db_user %>
-POSTGRES_PASSWORD=<%- db_password %>
+POSTGRES_DB=test1
+POSTGRES_USER=root
+POSTGRES_PASSWORD=password
 
 
 

@@ -23,16 +23,22 @@ redis:
   ports:
     - "6379:6379"
 
-data:
-  restart: always
-  image: postgres:latest
-  volumes:
-    - /var/lib/postgresql
+# data:
+#   restart: always
+#   image: postgres:latest
+#   env_file:
+#     - env
+#   volumes:
+#     - /var/lib/postgresql
 
 postgres:
   restart: always
   image: postgres:latest
-  volumes_from:
-    - data
+  volumes:
+     - /var/lib/postgresql
+  environment:
+    - POSTGRES_DB=test1
+    - POSTGRES_USER=root
+    - POSTGRES_PASSWORD=password
   ports:
     - "5432:5432"

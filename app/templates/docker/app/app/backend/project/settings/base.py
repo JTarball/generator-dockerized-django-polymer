@@ -55,7 +55,7 @@ DATABASES = {
         'ENGINE':   os.environ.get('DB_ENGINE'),                # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME':     os.environ.get('DB_NAME'),                  # Or path to database file if using sqlite3.
         'USER':     os.environ.get('DB_USER'),                  # Not used with sqlite3.
-        'PASSWORD': os.environ.get('DB_PASSWORD'),              # Not used with sqlite3.
+        'PASSWORD': os.environ.get('DB_PASS'),              # Not used with sqlite3.
         'HOST':     os.environ.get('DB_HOST'),                  # Set to empty string for localhost. Not used with sqlite3.
         'PORT':     os.environ.get('DB_PORT'),                  # Set to empty string for default. Not used with sqlite3.
     }
