@@ -11,7 +11,7 @@ This contains all the files needed to create Docker Images for this project incl
 * **app/**
   - docker for app including development files for django and polymer 
   - derived from 'jtarball/docker-base' (automated build from docker hub)
-  - your Project Directory is in here
+  - your project directory is in here
 * **base/**     
   - clone of 'docker-base' repo
   - docker files for base image
