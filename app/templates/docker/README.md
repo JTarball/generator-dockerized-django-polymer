@@ -2,17 +2,7 @@
 
 ## 'docker' Directory 
 
-### Introduction
-This is the settings directory containing Django project configuration.
-
-### How to Use
-
-`from django.conf import settings`
-
-It can be useful to have a link to the Django Global Settings (it's location could vary depending on or version of Django)
-
-e.g. 
-`ln -s /usr/local/lib/python2.7/site-packages/Django-1.7.1-py2.7.egg/django/conf/global_settings.py global.py`
+This contains all the files needed to create Docker Images for this project including any development files.
 
 ### Files
 
