@@ -29,7 +29,7 @@ e.g.
   - docker files for nginx service 
 
 
-### base directory 
+### 'base' directory 
 This is the base docker image - os with some extras provisioning for webapps. 
 Note you should never just use this on its own as it is meant as a 'base' as 
 such requires requirements etc.
