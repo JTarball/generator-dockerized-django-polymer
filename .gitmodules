@@ -1,0 +1,3 @@
+[submodule "app/templates/docker/base"]
+	path = app/templates/docker/base
+	url = https://github.com/JTarball/docker-base.git
