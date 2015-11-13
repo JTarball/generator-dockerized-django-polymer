@@ -2,8 +2,60 @@
 This is a docker file for django polymer web project.
 
 
-# How to get started
 
+# Todo
+
+- create repo docker-base
+- sublink to generator-dockerized django-polymer 
+- add comments to explain
+
+
+- need to separate 
+
+
+
+
+
+# Docker Image
+ > base 
+  - this has been included if required custom modification (from docker-base in github)
+  - has some dependencies when called (requirements etc)
+  
+
+ - app
+  - derived from docker-base:latest from docker hub ( 'docker-base' automated build via docker hub to keep up to date )
+  - requires manual build, tagging & deployment
+  - why not automated build via docker hub ---- more flexibility without, need a different .yml for production etc.
+
+
+
+
+# How to get started 
+
+
+# Docker Images explained
+
+
+
+
+# App Docker Image 
+ - use a base image - dockerfile and stuff included in case you want to see - automated build so always latest
+ - app  manual updates
+
+
+
+# Rebuild and Upload base image 
+
+- Automated build via docker hub. Easy set up. As we need to create a new docker-compose file for production use script instead (see below)
+
+or
+
+> docker login
+  - you will need to login into docker hub (set up an account if you dont have one)
+> docker build -t "jtarball/docker-base:latest" .
+  - this will build the Dockerfile in the current directory and tag it with "jtarball/docker-base:latest"
+> docker push "jtarball/docker-base:latest"
+  - push to docker hub
 
 
 # Useful Commands
@@ -13,6 +65,25 @@ This is a docker file for django polymer web project.
 
 > docker rm $(docker ps -a -q); docker rmi $(docker images -q);
  - kill and remove all docker images and containers
+
+> docker rmi $(docker images -q --filter "dangling=true")
+ - Ckean up un-tagged docker images
+
+
+
+
+
+Docker linguistics borrow from git terminology, but it’s rather dangerous to interpret these too literally.
+Keeping a clean docker environment
+
+run interactive containers with --rm flag to avoid having to remove them later.
+
+Remove all stopped containers:
+
+Clean up un-tagged docker images:
+docker rmi $(docker images -q --filter "dangling=true")
+Stop and remove all containers (including running containers!)
+Docker and Continuous Integration
 
 
 

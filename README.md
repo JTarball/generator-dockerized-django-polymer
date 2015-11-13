@@ -9,7 +9,7 @@ Yeoman generator for a multi-container Django Polymer web project
 - create docker machine for aws deployment
 
 
-
+-  npm install & bower install 
 - Ok
 
 - npm -g install 

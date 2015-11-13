@@ -177,6 +177,9 @@ var DockerizedDjangoPolymerGenerator = generators.Base.extend({
            generator_version: this.releaseVersion,
            secret_key: this.secretKey,
         });
+        // Need to create some empty directories
+        this.fs.copyTpl(this.templatePath('docker/app/app/backend/project/static/'), this.destinationPath('../../../docker/app/app/backend/project/static/'));
+        this.fs.copyTpl(this.templatePath('docker/app/app/backend/project/media/'), this.destinationPath('../../../docker/app/app/backend/project/media/'));
     },
 
     // Finally, (See run context order in yeoman generator docs)

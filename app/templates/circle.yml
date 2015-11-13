@@ -16,6 +16,10 @@ dependencies:
         - sudo killall postgres
         - docker info
         - sudo pip install docker-compose
+        - sudo npm -g install
+        - sudo mkdir /app
+        - cd /app && which yes > /dev/null; if [ $? -eq 0 ]; then yes | yo dockerized-django-polymer; fi
+        - docker-compose up -d 
 
 test:
   override:

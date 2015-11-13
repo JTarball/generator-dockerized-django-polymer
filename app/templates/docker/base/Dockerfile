@@ -1,5 +1,10 @@
+# If you modify this file, rebuild and push 
+# remember to change tag in app dockerfile
+
 FROM debian:jessie
 MAINTAINER James Tarball <james.tarball@gmail.com>
+
+
 
 # This code is inspired from the source code:
 # https://github.com/smaato/docker-quickstart
@@ -36,6 +41,15 @@ RUN npm install -g npm@2.13.0 && \
     npm install -g yo@1.4.7 bower@1.4.1 gulp@3.9.0 && \
     npm install -g generator-polymer git://github.com/JTarball/generator-django-polymer.git
 
+# grab gosu for easy step-down from root
+RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates wget && rm -rf /var/lib/apt/lists/* \
+    && wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/1.2/gosu-$(dpkg --print-architecture)" \
+    && wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/1.2/gosu-$(dpkg --print-architecture).asc" \
+    && gpg --verify /usr/local/bin/gosu.asc \
+    && rm /usr/local/bin/gosu.asc \
+    && chmod +x /usr/local/bin/gosu
+
 # Set the timezone.
 RUN sudo echo "Europe/London" > /etc/timezone
 RUN sudo dpkg-reconfigure -f noninteractive tzdata
@@ -59,12 +73,11 @@ RUN chown yeoman:yeoman $BUILD_DIR
 USER yeoman
 
 # To stop boiler-plate code, specify some on build commands
-# 1. install pip requirements  - install requirements based on environment type (dev/production)
-# 2. copy generate-project.py  - generates a new project for you!
-# 3. copy app folder           - code source code (you can then mount using docker-compose for development)
+# 1. install pip requirements   - install requirements based on environment type (dev/production)
+# 2. copy app folder            - code source code (you can then mount using docker-compose for development)
+# 3. run initialise-project.py  - initialises a new project for you!
 ONBUILD COPY requirements $BUILD_DIR/requirements
 ONBUILD RUN sudo pip install -r $BUILD_DIR/requirements/$ENV_TYPE.txt
-ONBUILD COPY generate-project.py $BUILD_DIR/generate-project.py
 ONBUILD COPY app $APP_DIR
 
 VOLUME $APP_DIR

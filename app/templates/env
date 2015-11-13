@@ -21,11 +21,12 @@ BACKEND_DIR=/app/backend
 # USE
 #
 # =============================
+#NEED TO REVERT THIS CODE!!!!!!
+
 SUPERUSER_NAME=administrator
 SUPERUSER_PASSWORD=password12
-SUPERUSER_FIRSTNAME=James
-SUPERUSER_LASTNAME=Tarball
 SUPERUSER_EMAIL=james.tarball@gmail.com
+
 DB_ENGINE=django.db.backends.postgresql_psycopg2
 DB_NAME=test1
 DB_USER=root
