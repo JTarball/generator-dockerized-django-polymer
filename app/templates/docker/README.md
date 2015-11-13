@@ -17,13 +17,16 @@ e.g.
 ### Files
 
 * README.md   - this file
-* app/        - docker for app including development files for django and polymer 
-              - derived from 'jtarball/docker-base' (automated build from docker hub)
-              - Your Project Directory is in here
-* base/       - clone of 'docker-base' repo
-              - docker files for base image
-              - only included in case you need a custom base image else you can delete this folder
-* nginx/      - docker files for nginx service 
+* app/
+  - docker for app including development files for django and polymer 
+  - derived from 'jtarball/docker-base' (automated build from docker hub)
+  - your Project Directory is in here
+* base/     
+  - clone of 'docker-base' repo
+  - docker files for base image
+  - only included in case you need a custom base image else you can delete this folder
+* nginx/      
+  - docker files for nginx service 
 
 
 ### base directory 
