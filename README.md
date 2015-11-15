@@ -26,6 +26,9 @@ Yeoman generator for a multi-container Django Polymer web project
 
 # To Deploy
 # export DOCKERHUB_USER=jtarball
+# docker login?
+
+# docker hub create repo 
 
 
 

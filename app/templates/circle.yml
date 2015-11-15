@@ -13,7 +13,7 @@ machine:
 # Generator install, scaffold in a new directory
 dependencies:
     pre:
-        # Remove services which will clash with Docker containers
+        # Remove services which will
         - sudo killall redis-server 
         - sudo killall postgres
         - docker info
@@ -31,8 +31,9 @@ dependencies:
 test:
     override:
       - cd /app
-      - #build-tag-push.py
+      - build-tag-push.py
       - docker-compose up -d
+      - 
 
 
 # test:
