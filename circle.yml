@@ -19,8 +19,17 @@ dependencies:
         - sudo killall postgres
         - docker info
         - sudo pip install docker-compose
+        - npm install -g npm
+        - sudo apt-get install nodejs
+        - npm install -g yo
+        - npm -g install
+        # Install Dependencies also
+        - npm -g install yeoman-generator
+        - npm -g generator-polymer
+        - npm -g install yosay
         - git clone https://github.com/docker-library/official-images.git ~/official-images
         # Install Generator and scaffold out 
-        - sudo npm -g install
         - sudo mkdir /app
-        - cd /app && which yes > /dev/null; if [ $? -eq 0 ]; then yes | yo dockerized-django-polymer; fi
+        - sudo chown -R ubuntu /app
+        - cd /app
+        - which yes > /dev/null; if [ $? -eq 0 ]; then yes | yo dockerized-django-polymer; fi
