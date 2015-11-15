@@ -33,7 +33,6 @@ test:
       - cd /app
       - #build-tag-push.py
       - docker-compose up -d
-      - 
 
 
 # test:
