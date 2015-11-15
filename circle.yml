@@ -41,8 +41,7 @@ dependencies:
 # Deployment test (build and tag / run / destroy)
 test:
     pre:
-      - cd /app
-      - docker-compose up -d
+      - cd /app && docker-compose up -d
       # Copy all tests into official folder and combine configs
       - sudo cp -r docker/app/tests/* ~/official-images/test/tests
       #- ~/official-images/test/run.sh --config ~/official-images/test/config.sh --config ./config.sh "generatordockerizeddjangopolymer_app_1"
