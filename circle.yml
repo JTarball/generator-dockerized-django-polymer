@@ -25,11 +25,39 @@ dependencies:
         - npm -g install
         # Install Dependencies also
         - npm -g install yeoman-generator
-        - npm -g generator-polymer
+        - npm -g install generator-polymer
         - npm -g install yosay
+        # Install official tests for official docker images
         - git clone https://github.com/docker-library/official-images.git ~/official-images
         # Install Generator and scaffold out 
         - sudo mkdir /app
         - sudo chown -R ubuntu /app
         - cd /app
         - which yes > /dev/null; if [ $? -eq 0 ]; then yes | yo dockerized-django-polymer; fi
+
+
+# Run django tests
+# Run polymer tests (TODO)
+# Deployment test (build and tag / run / destroy)
+
+# test:
+#     override:
+#       - cd /app
+#       - build-tag-push.py
+#       - docker-compose up -d
+#       - 
+
+
+# test:
+#   override:
+#     - docker-compose up -d 
+    # # APP_DIR START
+    # # need to save junit results inside app within docker container then copy to CIRCLE_TEST_REPORTS
+    # - docker-compose run app sh -c "cd backend/ && mkdir -p _auto_circle-junit/django && py.test --junitxml=_auto_circle-junit/django/junit.xml apps/blog apps/search apps/accounts"
+    # - mkdir -p $CIRCLE_TEST_REPORTS/django
+    # - mv /home/ubuntu/docker-django-polymer/docker/app/app/backend/_auto_circle-junit/django $CIRCLE_TEST_REPORTS/
+
+
+
+
+#run.sh --config /path/to/official-images/test/config.sh --config ./my-config.sh myimage
