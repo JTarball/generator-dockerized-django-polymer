@@ -19,4 +19,4 @@ EXPOSE 8000
 EXPOSE 3000
 EXPOSE 3001
 
-CMD ["yeoman"]
+CMD ["app"]

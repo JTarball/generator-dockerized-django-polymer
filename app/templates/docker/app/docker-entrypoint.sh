@@ -3,7 +3,7 @@ set -e
 
 # Add app as command if needed
 if [ "${1:0:1}" = '-' ]; then
-	set -- yeoman "$@"
+	set -- app "$@"
 fi
 
 function checkLastCommand 
@@ -16,10 +16,10 @@ function checkLastCommand
 	fi
 }  
 
-if [ "$1" = 'yeoman' ]; then
+if [ "$1" = 'app' ]; then
 	# Change ownership
 	#sudo chown -R app $APP_DIR
-	sudo chown -R yeoman:yeoman /usr/local/bin/gosu
+	sudo chown -R app:app /usr/local/bin/gosu
 
 	STRLOG="basic check of required environment variables ... "
 
@@ -90,4 +90,4 @@ if [ "$1" = 'yeoman' ]; then
 	#exec "$@"
 fi
 
-#exec "$@"
+exec "$@"

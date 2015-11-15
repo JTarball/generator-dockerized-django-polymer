@@ -9,6 +9,7 @@ set -e
 
 globalTests+=(
 	gmt
+	django
 )
 
 testAlias+=(
@@ -16,7 +17,7 @@ testAlias+=(
 )
 
 imageTests+=(
-	[jtarball/docker-base:latest]='
+	[generatordockerizeddjangopolymer_app_1]='
 		python-imports
 		python-pip-requests-ssl
 		python-sqlite3
@@ -25,5 +26,5 @@ imageTests+=(
 
 globalExcludeTests+=(
 	# single-binary images
-	[jtarball/docker-base:latest_utc]=1
+	[generatordockerizeddjangopolymer_app_1_utc]=1
 )
