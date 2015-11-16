@@ -17,7 +17,7 @@ testAlias+=(
 )
 
 imageTests+=(
-	[generatordockerizeddjangopolymer_app_1]='
+	[app_app_1]='
 		python-imports
 		python-pip-requests-ssl
 		python-sqlite3
@@ -26,5 +26,5 @@ imageTests+=(
 
 globalExcludeTests+=(
 	# single-binary images
-	[generatordockerizeddjangopolymer_app_1_utc]=1
+	[app_app_1_utc]=1
 )
