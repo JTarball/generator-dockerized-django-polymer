@@ -1,1 +1,1 @@
-../run-python-in-container.sh
+ ~/official-images/test/tests/run-python-in-container.sh

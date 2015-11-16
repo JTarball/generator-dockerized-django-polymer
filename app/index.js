@@ -18,7 +18,7 @@ var DockerizedDjangoPolymerGenerator = generators.Base.extend({
 
         this.composeWith('polymer', {
             options: {
-                "skip-install": false
+                "skip-install": true
             }
         });
     },
