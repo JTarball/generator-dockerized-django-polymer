@@ -237,7 +237,7 @@ LOCAL_APPS = (
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PATH_APPS + LOCAL_APPS
-print INSTALLED_APPS
+
 # ---------------------------------------------------------------------------- #
 # Third Party App Dependencies
 # ---------------------------------------------------------------------------- #

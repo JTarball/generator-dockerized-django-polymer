@@ -36,6 +36,7 @@ if [ "$1" = 'app' ]; then
 	fi
 
 	echo $(printf "%s ok" "$STRLOG")
+	echo "$1"
 
 	case "$1" in
 		--create)
@@ -75,9 +76,9 @@ if [ "$1" = 'app' ]; then
 
 	elif [ "$ENV_TYPE" = 'prod' ]; then
 		echo "Running Production Django Server Script"
-		python $APP_DIR/backend/bin/run.py
+		python $APP_DIR/backend/bin/run.py &
 		echo "Running FrontEnd Polymer"
-		gulp &
+		gulp
 
 	else
 		echo "Neither production or development environment selected - do Nothing"

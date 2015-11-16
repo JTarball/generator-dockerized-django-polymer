@@ -3,7 +3,7 @@
 
 # Want to be able to switch from dev to production 
 # 
-
+ENV_TYPE=prod
 
 # =============================
 # Main Project Env - Dockerfile
