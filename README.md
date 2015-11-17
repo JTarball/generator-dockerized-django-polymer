@@ -4,6 +4,8 @@ Yeoman generator for a multi-container Django Polymer web project
 
 
 
+<img src="http://yeoman.io/assets/img/tool-yo.3dcc.png" />
+
 
 - set project up with environment variable file (env) 
 - production docker configuration file
