@@ -1,5 +1,7 @@
+[![Circle CI](https://circleci.com/gh/JTarball/generator-dockerized-django-polymer.svg?style=svg)](https://circleci.com/gh/JTarball/generator-dockerized-django-polymer)
 # generator-dockerized-django-polymer
 Yeoman generator for a multi-container Django Polymer web project
+
 
 
 

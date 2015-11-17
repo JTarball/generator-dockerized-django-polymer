@@ -23,14 +23,6 @@ redis:
   ports:
     - "6379:6379"
 
-# data:
-#   restart: always
-#   image: postgres:latest
-#   env_file:
-#     - env
-#   volumes:
-#     - /var/lib/postgresql
-
 postgres:
   restart: always
   image: postgres:latest

@@ -1,6 +1,80 @@
 # docker-django-polymer
 This is a docker file for django polymer web project.
 
+# How to deploy to Amazon Web Services
+
+To deploy this project to AWS you must set the following environment variables:
+
+* DOCKERHUB_USER
+* AWS_ACCESS_KEY_ID
+* AWS_SECRET_ACCESS_KEY
+* AWS_VPC_ID
+
+```
+export DOCKERHUB_USER=jtarball
+export AWS_ACCESS_KEY_ID=xxxxxx
+export AWS_SECRET_ACCESS_KEY=xxxxxx
+export AWS_VPC_ID=xxxx
+```
+
+
+ run `create-docker-machine-aws.sh  <MACHINE_NAME>` where MACHINE_NAME is the name for the machine you want created 
+ run `python build-tag-push.py` which will build the docker app, push it to docker hub and a new compose yml file (you will need to be logged in  `docker login`)
+
+
+
+
+
+
+
+
+### Tutorial
+
+* [Flux7's Dockerfile Tutorial](http://flux7.com/blogs/docker/docker-tutorial-series-part-3-automation-is-the-word-using-dockerfile/)
+
+## Layers
+
+The versioned filesystem in Docker is based on layers.  They're like [git commits or changesets for filesystems](https://docs.docker.com/terms/layer/).
+
+Note that if you're using [aufs](https://en.wikipedia.org/wiki/Aufs) as your filesystem, Docker does not always remove data volumes containers layers when you delete a container!  See [PR 8484](https://github.com/docker/docker/pull/8484) for more details.
+
+## Links
+
+Links are how Docker containers talk to each other [through TCP/IP ports](https://docs.docker.com/userguide/dockerlinks/).  [Linking into Redis](https://docs.docker.com/examples/running_redis_service/) and [Atlassian](https://blogs.atlassian.com/2013/11/docker-all-the-things-at-atlassian-automation-and-wiring/) show worked examples.  You can also (in 0.11) resolve [links by hostname](https://docs.docker.com/userguide/dockerlinks/#updating-the-etchosts-file).
+
+NOTE: If you want containers to ONLY communicate with each other through links, start the docker daemon with `-icc=false` to disable inter process communication.
+
+If you have a container with the name CONTAINER (specified by `docker run --name CONTAINER`) and in the Dockerfile, it has an exposed port:
+
+```
+EXPOSE 1337
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Todo
