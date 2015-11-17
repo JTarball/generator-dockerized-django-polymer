@@ -9,7 +9,7 @@ set -e
 
 globalTests+=(
 	gmt
-	django
+	#django
 )
 
 testAlias+=(
